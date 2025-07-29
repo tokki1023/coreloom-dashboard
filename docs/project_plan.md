@@ -130,3 +130,29 @@
    - GitHub 리포지토리 생성
    - Vercel에서 Import
    - 환경 변수 설정
+
+## 3단계 진행중: GitHub 및 Vercel 배포
+
+### 배포 준비 완료
+1. **배포 스크립트**: `/deploy.sh` - GitHub 푸시 및 Vercel 배포 가이드
+2. **Vercel 설정**: `/vercel.json` - Vercel 빌드 및 라우팅 설정
+3. **Git 상태**: 모든 파일 커밋 완료
+
+### GitHub 배포 방법
+1. GitHub에 `coreloom-dashboard` 리포지토리 생성
+2. `./deploy.sh` 스크립트 실행
+3. GitHub 사용자명 입력
+
+### Vercel 배포 방법
+1. [Vercel.com](https://vercel.com) 로그인
+2. 'New Project' → GitHub 리포지토리 연결
+3. 환경 변수 설정:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy 클릭
+
+### 다음 작업
+- contacts.html 페이지 마이그레이션
+- portfolio.html 페이지 마이그레이션
+- community.html 페이지 마이그레이션
+- settings.html 페이지 마이그레이션
