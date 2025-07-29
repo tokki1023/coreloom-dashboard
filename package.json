@@ -5,6 +5,7 @@
   "main": "dev-server.js",
   "scripts": {
     "dev": "node dev-server.js",
+    "build": "echo 'No build step configured",
     "start": "node dev-server.js"
   },
   "keywords": [
