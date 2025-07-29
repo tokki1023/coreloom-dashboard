@@ -24,11 +24,9 @@ CREATE TABLE IF NOT EXISTS portfolios (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     category VARCHAR(100),
-    client_name VARCHAR(255),
-    project_date DATE,
-    thumbnail_url TEXT,
+    image_url TEXT,
+    project_url TEXT,
     status VARCHAR(50) DEFAULT 'active',
-    display_order INTEGER DEFAULT 0,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -36,7 +34,6 @@ CREATE TABLE IF NOT EXISTS portfolios (
 -- portfolios 테이블 인덱스
 CREATE INDEX idx_portfolios_status ON portfolios(status);
 CREATE INDEX idx_portfolios_category ON portfolios(category);
-CREATE INDEX idx_portfolios_display_order ON portfolios(display_order);
 
 -- 3. community_posts 테이블 (커뮤니티 게시글)
 CREATE TABLE IF NOT EXISTS community_posts (
@@ -83,10 +80,10 @@ INSERT INTO contacts (name, email, message, phone, company, status) VALUES
 ('박민수', 'minsoo@example.com', '협업 제안 드립니다', '010-5555-6666', '스타트업A', 'in_progress');
 
 -- 포트폴리오 샘플 데이터
-INSERT INTO portfolios (title, description, category, client_name, project_date, status) VALUES
-('AI 챗봇 솔루션', 'GPT 기반 고객 상담 챗봇 개발', 'AI/ML', '테크컴퍼니', '2024-12-01', 'active'),
-('반응형 웹사이트', '모바일 최적화 기업 홈페이지 제작', '웹개발', '디자인스튜디오', '2024-11-15', 'active'),
-('데이터 분석 대시보드', '실시간 비즈니스 인사이트 제공', '데이터분석', '스타트업A', '2024-10-20', 'active');
+INSERT INTO portfolios (title, description, category, image_url, project_url, status) VALUES
+('AI 챗봇 솔루션', 'GPT 기반 고객 상담 챗봇 개발', 'AI/ML', 'https://example.com/images/chatbot.jpg', 'https://example.com/chatbot-demo', 'active'),
+('반응형 웹사이트', '모바일 최적화 기업 홈페이지 제작', '웹개발', 'https://example.com/images/website.jpg', 'https://example.com/web-portfolio', 'active'),
+('데이터 분석 대시보드', '실시간 비즈니스 인사이트 제공', '데이터분석', 'https://example.com/images/dashboard.jpg', 'https://example.com/dashboard-demo', 'active');
 
 -- 커뮤니티 게시글 샘플 데이터
 INSERT INTO community_posts (title, content, author_name, category) VALUES
