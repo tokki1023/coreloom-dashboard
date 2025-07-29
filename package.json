@@ -1,0 +1,24 @@
+{
+  "name": "coreloom-dashboard",
+  "version": "1.0.0",
+  "description": "CoreLoom Dashboard with Supabase integration",
+  "main": "dev-server.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js"
+  },
+  "keywords": [
+    "dashboard",
+    "supabase",
+    "vercel"
+  ],
+  "author": "CoreLoom",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

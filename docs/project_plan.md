@@ -84,3 +84,49 @@
 - portfolio.html 페이지 마이그레이션  
 - community.html 페이지 마이그레이션
 - settings.html 페이지 마이그레이션
+
+## 배포 상태
+- **완료**: 대시보드 페이지 개발 및 Supabase 연동 완료
+- **대기**: Vercel 환경 변수 설정 필요
+- **참고**: Git 저장소 초기화 및 첫 커밋 완료
+
+## 로컬 테스트 방법
+1. VS Code나 다른 편집기에서 프로젝트 열기
+2. Live Server 확장 프로그램으로 실행
+3. `/public/dashboard_main.html` 접속
+4. Supabase 환경 변수 설정 후 테스트
+
+## 2단계 완료: 설정 가이드 및 도구 생성
+
+### 생성된 문서 및 도구
+1. **데이터베이스 설정**
+   - `/docs/supabase_schema.sql` - 테이블 생성 SQL 스크립트
+   - `/docs/supabase_setup_guide.md` - Supabase 상세 설정 가이드
+
+2. **배포 가이드**
+   - `/docs/vercel_deployment_guide.md` - Vercel 배포 상세 가이드
+   - `/QUICKSTART.md` - 빠른 시작 체크리스트
+
+3. **개발 도구**
+   - `/dev-server.js` - 로컬 개발 서버 (Node.js)
+   - `/package.json` - 프로젝트 의존성 정의
+
+### 다음 단계
+1. **Supabase 설정**
+   - 가이드 따라 프로젝트 생성
+   - SQL 스크립트 실행
+   - API 키 복사
+
+2. **환경 변수 설정**
+   - `.env` 파일에 Supabase 정보 입력
+
+3. **로컬 테스트**
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+4. **Vercel 배포**
+   - GitHub 리포지토리 생성
+   - Vercel에서 Import
+   - 환경 변수 설정
