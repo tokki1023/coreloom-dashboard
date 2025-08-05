@@ -1,0 +1,203 @@
+<?php
+/**
+ * CoreLoom 메인 홈페이지 (동적 성공사례 CMS 적용)
+ * 작성일: 2025-06-17  
+ * 목적: 포트폴리오 CMS와 연동된 동적 메인페이지
+ */
+
+require_once 'homepage_success_api.php';
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreLoom - AI 웹 개발을 10배 빠르게 | 작고 빠르고 강하게</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="CoreLoom의 AI 기술로 웹사이트를 15초 만에, 쇼핑몰을 2주 만에 완성하세요. 80% 비용 절감, 70% 시간 단축의 혁신적 솔루션.">
+    <meta name="keywords" content="AI 웹개발, 자동화, No-Code, 쇼핑몰 제작, 홈페이지 제작, CoreLoom">
+    <meta name="author" content="CoreLoom">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="CoreLoom - AI 웹 개발을 10배 빠르게">
+    <meta property="og:description" content="작고 빠르고 강하게, CoreLoom. 더 가치 있는 일에 쓸 시간을 선물합니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://tokki.dothome.co.kr">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-container">
+                <a href="/" class="logo">
+                    <i class="fas fa-atom"></i>
+                    CoreLoom
+                </a>
+                
+                <nav class="nav">
+                    <ul class="nav-menu">
+                        <li><a href="/" class="nav-link">홈</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">솔루션</a>
+                            <div class="dropdown-menu">
+                                <a href="/solutions/ai-ecommerce.html" class="dropdown-item">AI 쇼핑몰 구축</a>
+                                <a href="/solutions/fast-website.html" class="dropdown-item">초고속 홈페이지</a>
+                                <a href="/solutions/enterprise.html" class="dropdown-item">엔터프라이즈 자동화</a>
+                            </div>
+                        </li>
+                        <li><a href="/pricing.html" class="nav-link">가격</a></li>
+                        <li><a href="/portfolio.php" class="nav-link">포트폴리오</a></li>
+                        <li><a href="/community.php" class="nav-link">커뮤니티</a></li>
+                        <li><a href="/about.html" class="nav-link">회사소개</a></li>
+                    </ul>
+                    
+                    <a href="/contact.html" class="btn btn-primary" style="display: none;">
+                        <i class="fas fa-comments"></i>
+                        무료 상담 신청
+                    </a>
+                </nav>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <div class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="/">홈</a></li>
+                    <li><a href="/solutions/ai-ecommerce.html">AI 쇼핑몰 구축</a></li>
+                    <li><a href="/solutions/fast-website.html">초고속 홈페이지</a></li>
+                    <li><a href="/solutions/enterprise.html">엔터프라이즈 자동화</a></li>
+                    <li><a href="/pricing.html">가격</a></li>
+                    <li><a href="/portfolio.php">포트폴리오</a></li>
+                    <li><a href="/community.php">커뮤니티</a></li>
+                    <li><a href="/about.html">회사소개</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1>AI로 웹 구축을 <span class="highlight">10배 빠르게</span></h1>
+                    <p>작고 빠르고 강하게, CoreLoom.<br>더 가치 있는 일에 쓸 시간을 선물합니다.</p>
+                </div>
+                <div class="hero-graphic"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Customer Cases Section - 동적 CMS 연동 -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>고객 <span class="highlight">성공 사례</span></h2>
+                <p>CoreLoom과 함께 성장한 기업들의 실제 성과를 확인하세요</p>
+            </div>
+            <div class="cases-grid">
+                <?php echo renderHomepageSuccessCases(); ?>
+            </div>
+            
+            <!-- Customer Logos -->
+            <div class="customer-logos">
+                <h4>함께하는 파트너사들</h4>
+                <div class="logos-grid">
+                    <div class="logo-item">🏢 Tech Corp</div>
+                    <div class="logo-item">🏪 Online Mall</div>
+                    <div class="logo-item">🏛️ Gov Agency</div>
+                    <div class="logo-item">🏭 Manufacturing</div>
+                    <div class="logo-item">🏦 Finance Group</div>
+                    <div class="logo-item">🏥 Healthcare</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAB -->
+    <div class="fab-container">
+        <a href="/contact.html" class="fab-main" title="무료 상담 신청">
+            <i class="fas fa-comments"></i>
+        </a>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // 헤더 스크롤 효과
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // 모바일 메뉴 토글
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (hamburger && mobileMenu) {
+                hamburger.addEventListener('click', function() {
+                    if (mobileMenu.style.display === 'block') {
+                        mobileMenu.style.display = 'none';
+                    } else {
+                        mobileMenu.style.display = 'block';
+                    }
+                });
+                
+                // 외부 클릭시 메뉴 닫기
+                document.addEventListener('click', function(event) {
+                    if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+                        mobileMenu.style.display = 'none';
+                    }
+                });
+            }
+        }
+        
+        // 성공사례 동적 로딩 (선택사항 - AJAX 방식)
+        function loadSuccessCases() {
+            fetch('/homepage_success_api.php?action=get_html')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const casesGrid = document.querySelector('.cases-grid');
+                        if (casesGrid) {
+                            casesGrid.innerHTML = data.html;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('성공사례 로딩 오류:', error);
+                });
+        }
+        
+        // 페이지 로드 완료 후 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            initMobileMenu();
+            
+            // 필요시 동적 로딩 (현재는 PHP에서 서버사이드 렌더링 사용)
+            // loadSuccessCases();
+        });
+    </script>
+</body>
+</html>

@@ -1,12 +1,3 @@
-<?php
-/**
- * CoreLoom 메인 홈페이지 (동적 성공사례 CMS 적용)
- * 작성일: 2025-06-17  
- * 목적: 포트폴리오 CMS와 연동된 동적 메인페이지
- */
-
-require_once 'homepage_success_api.php';
-?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,7 +14,7 @@ require_once 'homepage_success_api.php';
     <meta property="og:title" content="CoreLoom - AI 웹 개발을 10배 빠르게">
     <meta property="og:description" content="작고 빠르고 강하게, CoreLoom. 더 가치 있는 일에 쓸 시간을 선물합니다.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://tokki.dothome.co.kr">
+    <meta property="og:url" content="https://coreloom-89of0s5hz-tokki1023s-projects.vercel.app">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -36,7 +27,11 @@ require_once 'homepage_success_api.php';
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
     
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <!-- Header -->
@@ -54,21 +49,16 @@ require_once 'homepage_success_api.php';
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle">솔루션</a>
                             <div class="dropdown-menu">
-                                <a href="/solutions/ai-ecommerce.html" class="dropdown-item">AI 쇼핑몰 구축</a>
-                                <a href="/solutions/fast-website.html" class="dropdown-item">초고속 홈페이지</a>
-                                <a href="/solutions/enterprise.html" class="dropdown-item">엔터프라이즈 자동화</a>
+                                <a href="#" class="dropdown-item">AI 쇼핑몰 구축</a>
+                                <a href="#" class="dropdown-item">초고속 홈페이지</a>
+                                <a href="#" class="dropdown-item">엔터프라이즈 자동화</a>
                             </div>
                         </li>
-                        <li><a href="/pricing.html" class="nav-link">가격</a></li>
-                        <li><a href="/portfolio.php" class="nav-link">포트폴리오</a></li>
-                        <li><a href="/community.php" class="nav-link">커뮤니티</a></li>
-                        <li><a href="/about.html" class="nav-link">회사소개</a></li>
+                        <li><a href="portfolio.html" class="nav-link">포트폴리오</a></li>
+                        <li><a href="community.html" class="nav-link">커뮤니티</a></li>
+                        <li><a href="contacts.html" class="nav-link">문의하기</a></li>
+                        <li><a href="dashboard_main.html" class="nav-link">대시보드</a></li>
                     </ul>
-                    
-                    <a href="/contact.html" class="btn btn-primary" style="display: none;">
-                        <i class="fas fa-comments"></i>
-                        무료 상담 신청
-                    </a>
                 </nav>
                 
                 <div class="hamburger" id="hamburger">
@@ -81,13 +71,10 @@ require_once 'homepage_success_api.php';
             <div class="mobile-menu" id="mobile-menu">
                 <ul>
                     <li><a href="/">홈</a></li>
-                    <li><a href="/solutions/ai-ecommerce.html">AI 쇼핑몰 구축</a></li>
-                    <li><a href="/solutions/fast-website.html">초고속 홈페이지</a></li>
-                    <li><a href="/solutions/enterprise.html">엔터프라이즈 자동화</a></li>
-                    <li><a href="/pricing.html">가격</a></li>
-                    <li><a href="/portfolio.php">포트폴리오</a></li>
-                    <li><a href="/community.php">커뮤니티</a></li>
-                    <li><a href="/about.html">회사소개</a></li>
+                    <li><a href="portfolio.html">포트폴리오</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="contacts.html">문의하기</a></li>
+                    <li><a href="dashboard_main.html">대시보드</a></li>
                 </ul>
             </div>
         </div>
@@ -100,21 +87,35 @@ require_once 'homepage_success_api.php';
                 <div class="hero-text">
                     <h1>AI로 웹 구축을 <span class="highlight">10배 빠르게</span></h1>
                     <p>작고 빠르고 강하게, CoreLoom.<br>더 가치 있는 일에 쓸 시간을 선물합니다.</p>
+                    <div class="hero-actions">
+                        <a href="contacts.html" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            무료 상담 시작하기
+                        </a>
+                        <a href="portfolio.html" class="btn btn-secondary">
+                            <i class="fas fa-eye"></i>
+                            포트폴리오 보기
+                        </a>
+                    </div>
                 </div>
                 <div class="hero-graphic"></div>
             </div>
         </div>
     </section>
     
-    <!-- Customer Cases Section - 동적 CMS 연동 -->
+    <!-- Customer Cases Section - Supabase 연동 -->
     <section class="cases-section">
         <div class="container">
             <div class="section-header">
                 <h2>고객 <span class="highlight">성공 사례</span></h2>
                 <p>CoreLoom과 함께 성장한 기업들의 실제 성과를 확인하세요</p>
             </div>
-            <div class="cases-grid">
-                <?php echo renderHomepageSuccessCases(); ?>
+            <div class="cases-grid" id="cases-grid">
+                <!-- 로딩 표시 -->
+                <div class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>성공사례를 불러오는 중...</p>
+                </div>
             </div>
             
             <!-- Customer Logos -->
@@ -132,72 +133,124 @@ require_once 'homepage_success_api.php';
         </div>
     </section>
     
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number" id="websites-count">500+</div>
+                    <div class="stat-label">웹사이트 구축</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">🚀</div>
+                    <div class="stat-number">80%</div>
+                    <div class="stat-label">비용 절감</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-number">15초</div>
+                    <div class="stat-label">최고 속도</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon">❤️</div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">고객 만족도</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>CoreLoom만의 <span class="highlight">특별함</span></h2>
+                <p>AI 기술과 인간의 창의성이 만나는 혁신적인 개발 플랫폼</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI 자동화</h3>
+                    <p>복잡한 코딩 작업을 AI가 자동으로 처리하여 개발 시간을 대폭 단축합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>맞춤형 디자인</h3>
+                    <p>브랜드 아이덴티티에 맞는 독창적인 디자인을 AI가 제안하고 구현합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>초고속 배포</h3>
+                    <p>개발부터 배포까지 전 과정을 자동화하여 빠른 론칭이 가능합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>지금 시작하세요</h2>
+                <p>CoreLoom과 함께라면 당신의 아이디어가 현실이 됩니다</p>
+                <div class="cta-actions">
+                    <a href="contacts.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-comments"></i>
+                        무료 상담 받기
+                    </a>
+                    <a href="portfolio.html" class="btn btn-secondary btn-large">
+                        <i class="fas fa-folder-open"></i>
+                        작업 사례 보기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-atom"></i>
+                        CoreLoom
+                    </div>
+                    <p>AI 기술과 창의성으로 만드는 더 나은 웹의 미래</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>서비스</h4>
+                        <ul>
+                            <li><a href="portfolio.html">포트폴리오</a></li>
+                            <li><a href="community.html">커뮤니티</a></li>
+                            <li><a href="contacts.html">문의하기</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>관리</h4>
+                        <ul>
+                            <li><a href="dashboard_main.html">대시보드</a></li>
+                            <li><a href="settings.html">설정</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CoreLoom. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
     <!-- FAB -->
     <div class="fab-container">
-        <a href="/contact.html" class="fab-main" title="무료 상담 신청">
+        <a href="contacts.html" class="fab-main" title="무료 상담 신청">
             <i class="fas fa-comments"></i>
         </a>
     </div>
     
     <!-- JavaScript -->
-    <script>
-        // 헤더 스크롤 효과
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // 모바일 메뉴 토글
-        function initMobileMenu() {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (hamburger && mobileMenu) {
-                hamburger.addEventListener('click', function() {
-                    if (mobileMenu.style.display === 'block') {
-                        mobileMenu.style.display = 'none';
-                    } else {
-                        mobileMenu.style.display = 'block';
-                    }
-                });
-                
-                // 외부 클릭시 메뉴 닫기
-                document.addEventListener('click', function(event) {
-                    if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
-                        mobileMenu.style.display = 'none';
-                    }
-                });
-            }
-        }
-        
-        // 성공사례 동적 로딩 (선택사항 - AJAX 방식)
-        function loadSuccessCases() {
-            fetch('/homepage_success_api.php?action=get_html')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        const casesGrid = document.querySelector('.cases-grid');
-                        if (casesGrid) {
-                            casesGrid.innerHTML = data.html;
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.error('성공사례 로딩 오류:', error);
-                });
-        }
-        
-        // 페이지 로드 완료 후 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            initMobileMenu();
-            
-            // 필요시 동적 로딩 (현재는 PHP에서 서버사이드 렌더링 사용)
-            // loadSuccessCases();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
